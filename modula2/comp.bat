@@ -1,0 +1,17 @@
+gpm rotinas.def
+gpm rotinas.mod
+gpm graficos.def
+gpm graficos.mod
+gpm mlivros.def
+gpm mlivros.mod
+gpm musuario.def
+gpm musuario.mod
+gpm memprest.def
+gpm memprest.mod
+gpm mopcoes.def
+gpm mopcoes.mod
+gpm biblio.mod
+build biblio
+del *.rfx
+del *.syx
+del *.obj

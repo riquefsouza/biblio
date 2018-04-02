@@ -1,0 +1,36 @@
+DEFINITION MODULE MLivros;
+
+FROM Rotinas IMPORT LivrosRec;
+FROM StdStrings IMPORT String;
+FROM UxFiles IMPORT File;
+
+VAR
+ (* variaveis do modulo de Livros *)
+
+ S:String;
+ I:INTEGER; 
+
+ vLista : ARRAY[0..50] OF String;
+ Livros : LivrosRec;
+ LivrosFile : File;  
+ nTamLivros : INTEGER;
+ vLivros : ARRAY[1..10] OF String; (* 30 *)
+
+(* Declaracao de Funcoes *)
+
+PROCEDURE PesLivros(Arq:File;tipo:CHAR;campo:String;nCod2:INTEGER;sCod2:String;
+                   nTamsCod:INTEGER):INTEGER;
+PROCEDURE VerificaLivros():BOOLEAN;
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE formLivros(tipo:INTEGER;titulo,rod:String);
+PROCEDURE Limpar_Livros; 
+PROCEDURE Rotulos_formLivros(l:INTEGER); 
+PROCEDURE Controles_formLivros(tipo:String;tipo2,pos,col:INTEGER;rod:String;
+                               foco:BOOLEAN);
+PROCEDURE Atribuir_vLivros(limpar:BOOLEAN);
+PROCEDURE Digita_formLivros;
+PROCEDURE SalvarLivros(tipo:INTEGER);
+
+END MLivros.

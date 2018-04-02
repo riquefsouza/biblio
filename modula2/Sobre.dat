@@ -1,0 +1,43 @@
+ ²²²²²²²     ²    ²²²²²²²     ²       ²    ²²²²²² 
+²²²    ²²²   ²²  ²²²    ²²²   ²²      ²²  ²²²  ²²²
+²²²²²²²²²    ²²  ²²²²²²²²²    ²²      ²²  ²²    ²²
+²²²    ²²²   ²²  ²²²    ²²²   ²²²     ²²  ²²    ²²
+²²²²   ²²²   ²²  ²²²²   ²²²   ²²²²    ²²  ²²²  ²²²
+ ²²²²²²²²²   ²²   ²²²²²²²²²   ²²²²²²  ²²   ²²²²²² 
+             
+Programa Desenvolvido por Henrique Figueiredo de Souza
+Todos os Direito Reservados - 1999  Versao 1.0
+           
+Programa desenvolvido em  ***>>> MODULA2 <<<***
+            
+Sistema de Automacao de Biblioteca
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+            
+O sistema e composto dos seguintes modulos :
+            
+*** Modulo de Livros da Biblioteca ***
+            
+1. Cadastro de Livros.
+2. Alteracao dos dados dos Livros cadastrados.
+3. Consulta de Livros por :
+3.1 Todos os Livros.
+3.2 Titulo.
+3.3 Autor.
+3.4 Area.
+3.5 Palavra-Chave.
+                 
+*** Modulo de Usuarios da Biblioteca ***
+                 
+1. Cadastro de Usuarios
+2. Alteracao dos dados dos Usuarios cadastrados.
+3. Consulta de Usuarios por :
+3.1 Todos os Usuarios.
+3.2 Nome.
+3.3 Identidade.
+3.4 Numero de Inscricao.
+               
+*** Modulo de Emprestimos de Devolucoes ***
+               
+1. Emprestar Livros
+2. Devolver Livros
+3. Consultar Emprestimos e Devolucoes

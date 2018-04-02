@@ -1,0 +1,37 @@
+DEFINITION MODULE MUsuario;
+
+FROM Rotinas IMPORT UsuariosRec;
+FROM StdStrings IMPORT String;
+FROM UxFiles IMPORT File;
+
+VAR
+ (* variaveis do modulo de Usuarios *)
+
+ S:String;
+ I:INTEGER; 
+
+ vLista : ARRAY[0..50] OF String;
+ Usuarios : UsuariosRec;
+ UsuariosFile : File;
+ nTamUsuarios : INTEGER;
+ vUsuarios : ARRAY[1..11] OF String; (* 30 *)
+
+(* Declaracao de Funcoes *)
+
+PROCEDURE PesUsuarios(Arq:File;tipo:CHAR;campo:String;nCod2:INTEGER;sCod2:String;
+                      nTamsCod:INTEGER):INTEGER; 
+PROCEDURE PesBinaria(Chave:INTEGER):INTEGER; 
+PROCEDURE VerificaUsuarios():BOOLEAN;
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE formUsuarios(tipo:INTEGER;titulo,rod:String);
+PROCEDURE Limpar_Usuarios;
+PROCEDURE Rotulos_formUsuarios(l:INTEGER); 
+PROCEDURE Controles_formUsuarios(tipo:String;tipo2,pos,
+          col:INTEGER;rod:String;foco:BOOLEAN); 
+PROCEDURE Atribuir_vUsuarios(limpar:BOOLEAN); 
+PROCEDURE Digita_formUsuarios;
+PROCEDURE SalvarUsuarios(tipo:INTEGER);
+
+END MUsuario.

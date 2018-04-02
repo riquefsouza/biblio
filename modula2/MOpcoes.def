@@ -1,0 +1,20 @@
+DEFINITION MODULE MOpcoes;
+
+FROM StdStrings IMPORT String;
+FROM UxFiles IMPORT File;
+
+VAR
+ (* variaveis do modulo de Opcoes *)
+
+ vLista : ARRAY[0..50] OF String;
+ SobreFile : File;
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE formSair; 
+PROCEDURE Controles_formSair(tipo:String;foco:BOOLEAN); 
+PROCEDURE formSobre; 
+PROCEDURE LerArquivoSobre; 
+PROCEDURE Controles_formSobre(tipo:String;pos,col:INTEGER;foco:BOOLEAN); 
+
+END MOpcoes.

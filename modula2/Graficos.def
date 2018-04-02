@@ -1,0 +1,36 @@
+DEFINITION MODULE Graficos;
+
+FROM Rotinas IMPORT Cores, LivrosRec, UsuariosRec, EmprestimosRec;
+FROM StdStrings IMPORT String;
+FROM UxFiles IMPORT File;
+
+VAR
+ Livros : LivrosRec;
+ Usuarios : UsuariosRec;
+ Emprestimos : EmprestimosRec;
+
+(* Declaracao de funcoes *)
+
+PROCEDURE Botao(topo,esquerda:INTEGER;fg,bg,sfg,sbg:Cores;
+                texto:String;foco:BOOLEAN):INTEGER; 
+PROCEDURE formSplash;
+PROCEDURE Lista(tipo,topo,esquerda,altura,largura,tlinhas,tcolunas,rtam:INTEGER;
+               fg,bg:Cores; 
+               VAR Listapos,Listacol:INTEGER;foco:BOOLEAN;
+               VAR vLista:ARRAY OF String;Arq:File): INTEGER;
+PROCEDURE TiposLista(tipo,largura,pos,col,rtam:INTEGER;
+                     VAR vLista:ARRAY OF String;Arq:File):String;
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE Digita( VAR S: String;JanelaTam,MaxTam, x, y : INTEGER;
+                  fg,bg :Cores;FT : CHAR; Fundo : INTEGER); 
+PROCEDURE DesenhaBotao(topo,esquerda:INTEGER;fg,bg,sfg,sbg:Cores; 
+                       texto:String;foco:BOOLEAN); 
+PROCEDURE Menu(qtd,topo:INTEGER;fg,bg,lfg,lbg:Cores;pos2:INTEGER;
+               mfg,mbg:Cores;cont2:INTEGER;VAR vMenu:ARRAY OF String); 
+PROCEDURE DesenhaLista(tipo,topo,esquerda,altura,largura:INTEGER;
+                       fg,bg:Cores;pos,col,rtam:INTEGER;foco:BOOLEAN;
+                VAR vLista:ARRAY OF String;Arq:File);
+
+END Graficos.

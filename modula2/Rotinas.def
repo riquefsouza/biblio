@@ -1,0 +1,112 @@
+DEFINITION MODULE Rotinas;
+
+FROM StdStrings IMPORT String;
+FROM SYSTEM IMPORT ADDRESS;
+FROM UxFiles IMPORT File;
+
+(* Declaracao de tipos *)
+
+TYPE
+
+  ModoCursor = (nenhum,normal,solido);
+
+  Cores=(BlackFG,BlueFG,GreenFG,CyanFG,RedFG,MagentaFG,BrownFG,LightGrayFG,
+         BlackBG,BlueBG,GreenBG,CyanBG,RedBG,MagentaBG,BrownBG,LightGrayBG,
+         DarkGrayFG,LightBlueFG,LightGreenFG,LightCyanFG,LightRedFG,
+         LightMagentaFG,YellowFG,WhiteFG);
+
+  Keys = ( NullKey, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10,
+           CarriageReturn, Tab, ShiftTab, Bksp, UpArrow,
+           DownArrow, RightArrow, LeftArrow, DeleteKey,
+           InsertKey, HomeKey, Esc, EndKey, TextKey,
+           NumberKey, SpaceKey, PgUp, PgDn, CtrlA, AltA,
+           AltE, AltU, AltS, AltO);
+
+  (* Registro de Enderecos *)
+
+  Enderecos = RECORD
+     Logra : ARRAY[0..29] OF CHAR;    (* Logradouro (30) *)
+     Numero : INTEGER;                (* Numero do Endereco (5) *)
+     Compl : ARRAY[0..9] OF CHAR;     (* Complemento (10) *)
+     Bairro : ARRAY[0..19] OF CHAR;   (* Bairro do Endereco (20) *)
+     Cep : ARRAY[0..7] OF CHAR;       (* Cep do Endereco (8) *)
+  END;
+
+  (* Registro de Livros *)
+
+  LivrosRec = RECORD
+     Ninsc : INTEGER;    (* Numero de Inscricao do Livro (5) *)
+     Titulo : ARRAY[0..29] OF CHAR; (* Titulo do Livro (30) *)
+     Autor : ARRAY[0..29] OF CHAR;  (* Autor do Livro (30) *)
+     Area : ARRAY[0..29] OF CHAR;   (* Area de atuacao do Livro (30) *)
+     PChave : ARRAY[0..9] OF CHAR;  (* Palavra-Chave para pesquisar o Livro (10) *)
+     Edicao : INTEGER;              (* Edicao do Livro (4) *)
+     AnoPubli : INTEGER; (* Ano de Publicacao do Livro (4) *)
+     Editora : ARRAY[0..29] OF CHAR; (* Editora do Livro (30) *)
+     Volume : INTEGER;   (* Volume do Livro (4) *)
+     Estado : CHAR;      (* Estado Atual - (D)isponivel ou (E)mprestado (1) *)
+  END;
+
+  (* Registro de Usuarios *)
+
+  UsuariosRec = RECORD
+     Ninsc : INTEGER;      (* Numero de inscricao do Usuario (5) *)
+     Nome : ARRAY[0..29] OF CHAR;        (* Nome completo do Usuario (30) *)
+     Ident : ARRAY[0..9] OF CHAR;       (* Identidade do Usuario (10) *)
+     Endereco : Enderecos; (* Endereco completo do Usuario (73) *)
+     Telefone : ARRAY[0..10] OF CHAR;   (* Telefone do Usuario (11) *)
+     Categoria : CHAR;     (* Categoria - (A)luno,(P)rofessor,(F)uncionario (1) *)
+     Situacao : INTEGER;   (* Situacao - Numero de Livros em sua posse (1) *)
+  END;
+
+  (* Registro de Emprestimos *)
+
+  EmprestimosRec = RECORD
+   NinscUsuario : INTEGER; (* Numero de inscricao do Usuario (5) *)
+   NinscLivro : INTEGER;   (* Numero de inscricao do Livro (5) *)
+   DtEmprestimo : ARRAY[0..9] OF CHAR; (* Data de Emprestimo do Livro (10) *)
+   DtDevolucao : ARRAY[0..9] OF CHAR;  (* Data de Devolucao do Livro (10) *)
+   Removido : BOOLEAN;     (* Removido - Indica exclusao logica *)
+  END;
+
+(* Declaracao de funcoes *)
+
+PROCEDURE Ss(str1,str2:ARRAY OF CHAR):String; 
+PROCEDURE LENGTH(str1:ARRAY OF CHAR):INTEGER; 
+PROCEDURE CHRS(i1:INTEGER):String; 
+PROCEDURE Zeros(s:String;tam:INTEGER):String; 
+PROCEDURE Repete(St:String;Tam:INTEGER):String; 
+PROCEDURE Rtrimstr(str:String):String; 
+PROCEDURE Copy(str:String;ini,tam:INTEGER):String;  
+PROCEDURE Pos(origem:CHAR; alvo:String):INTEGER; 
+PROCEDURE RetDataAtual():String;
+PROCEDURE ConverteData(dt:String):INTEGER; 
+PROCEDURE SomaDias(dt1:String;qtddias:INTEGER):String; 
+PROCEDURE SubtraiDatas(dt1:String;dt2:String):INTEGER;
+PROCEDURE DiadaSemana(dt:String):String;
+PROCEDURE TamArquivo(Arq:File;Endereco:ADDRESS;TamTipo:CARDINAL):INTEGER;
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE SetaCor(Cor:Cores);
+PROCEDURE EscreveRapido(x,y:INTEGER;
+                        VAR S:String;fg,bg:Cores); 
+PROCEDURE Center(y:INTEGER;s:String;fg,bg:Cores); 
+PROCEDURE Inserir(origem:CHAR;VAR alvo:String;ini:INTEGER); 
+PROCEDURE Esperar(freq:INTEGER); 
+PROCEDURE SetaCursor(tipo:ModoCursor); 
+PROCEDURE Beep;
+PROCEDURE Inkey(VAR chavefuncional:BOOLEAN;
+                VAR ch:CHAR;cursorinicio,cursorfim:CHAR;VAR sKey:Keys); 
+PROCEDURE Etexto(c,l:INTEGER;fg,bg:Cores;texto:String); 
+PROCEDURE TeladeFundo(tipo:String;fg,bg:Cores); 
+PROCEDURE Cabecalho(texto:String;tipo:String;fg,bg:Cores); 
+PROCEDURE Rodape(texto:String;tipo:String;fg,bg:Cores); 
+PROCEDURE DatadoSistema(l,c:INTEGER;fg,bg:Cores); 
+PROCEDURE HoradoSistema(l,c:INTEGER;fg,bg:Cores); 
+PROCEDURE Formulario(titulo:String;topo,esquerda,
+                     altura,largura:INTEGER;fg,bg:Cores;
+                     sombra:String;sfg,sbg:Cores); 
+PROCEDURE AbrirArquivo(Tipo:INTEGER;VAR Arq:File);
+
+END Rotinas.

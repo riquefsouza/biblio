@@ -1,0 +1,40 @@
+DEFINITION MODULE MEmprest;
+
+FROM Rotinas IMPORT LivrosRec, UsuariosRec, EmprestimosRec;
+FROM StdStrings IMPORT String;
+FROM UxFiles IMPORT File;
+
+VAR
+ (* variaveis do modulo de Emprestimos *)
+
+ S:String;
+ I:INTEGER; 
+
+ vLista : ARRAY[0..50] OF String;
+ Livros : LivrosRec;
+ LivrosFile : File;
+ Usuarios : UsuariosRec;
+ UsuariosFile : File;
+
+ Emprestimos : EmprestimosRec;
+ EmprestimosFile : File;
+
+ nTamEmprestimos : INTEGER;
+ vEmprestimos : ARRAY[1..5] OF String; (* 10 *)
+
+
+(* Declaracao de Funcoes *)
+
+PROCEDURE PesEmprestimos(nCodUsuario,nCodLivro:INTEGER):INTEGER; 
+
+(* Declaracao de Procedimentos *)
+
+PROCEDURE formEmprestimos(tipo:INTEGER;titulo,rod:String); 
+PROCEDURE Limpar_Emprestimos; 
+PROCEDURE Rotulos_formEmprestimos(tipo,l:INTEGER); 
+PROCEDURE Controles_formEmprestimos(tipo:String;tipo2,pos,
+          col:INTEGER;rod:String;foco:BOOLEAN); 
+PROCEDURE Atribuir_vEmprestimos(limpar:BOOLEAN);
+PROCEDURE SalvarEmprestimos(tipo:INTEGER); 
+
+END MEmprest.
